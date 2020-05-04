@@ -11,6 +11,7 @@ jobs:
     pool:
       vmImage: 'ubuntu-latest'
       timeoutInMinutes: 120
+    steps:
       - checkout: self
         path: github.com/sam-caldwell/adrestia-assertions/pkg
 
@@ -18,8 +19,7 @@ jobs:
         inputs:
           version: '1.13.5'
 
-      - script: |
-          ./scripts/build.sh
+      - script: ./scripts/build.sh
         displayName: Go Test
         enabled: true
         continueOnError: false
