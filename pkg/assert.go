@@ -7,14 +7,16 @@
 */
 package AdrestiaAssert
 
-import "github.com/pkg/errors"
+import (
+	"github.com/pkg/errors"
+)
 
-func AssertPanic(condition bool, response string){
+func Panic(condition bool, response string){
 	if condition{
 		panic(response)
 	}
 }
-func AssertError(condition bool, response string) (error) {
+func Error(condition bool, response string) (error) {
 	if condition{
 		return errors.New(response)
 	}
