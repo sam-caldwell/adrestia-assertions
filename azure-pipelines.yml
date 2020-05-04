@@ -13,11 +13,18 @@ jobs:
       timeoutInMinutes: 120
     steps:
       - checkout: self
-        path: src/github.com/sam-caldwell/adrestia-assertions/pkg
+        path: git
 
       - task: GoTool@0
         inputs:
           version: '1.13.5'
+
+      - script: |
+          mkdir -p src/github.com/sam-caldwell/adrestia-assertions/
+          cp -rfvp . src/github.com/sam-caldwell/adrestia-assertions/
+        displayName: Fix dir structure
+        enabled: true
+        continueOnError: false
 
       - script: ./scripts/build.sh
         displayName: Go Test
