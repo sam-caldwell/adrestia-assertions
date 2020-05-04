@@ -22,53 +22,54 @@ jobs:
         enabled: true
 
       - script: |
-          export GOPATH=$GOPATH:$(pwd)
+          go get "github.com/sam-caldwell/adrestia-assertions/pkg"
+          cd /usr/local/go1.14/src/github.com/sam-caldwell/adrestia-assertions
           go test -v
         displayName: Run Golang tests.
         continueOnError: false
         enabled: true
-
-  - job: BuildTestMacOs
-    pool:
-      vmImage: 'macOS-latest'
-      timeoutInMinutes: 120
-    steps:
-      - checkout: self
-        # See BUILD_DIR.
-        path: git
-
-      - script: go version
-        displayName: Go Version
-        continueOnError: false
-        enabled: true
-
-      - script: |
-          GOPATH=$GOPATH:$(pwd)
-          go test -v
-        displayName: Run Golang tests.
-        continueOnError: false
-        enabled: true
-
-  - job: BuildTestWindows
-    pool:
-      vmImage: 'windows-latest'
-      timeoutInMinutes: 120
-    steps:
-      - checkout: self
-        # See BUILD_DIR.
-        path: git
-
-      - script: go version
-        displayName: Go Version
-        continueOnError: false
-        enabled: true
-
-      - script: |
-          SET GOPATH=$GOPATH:$(pwd)
-          go test -v
-        displayName: Run Golang tests.
-        continueOnError: false
-        enabled: true
+#
+#  - job: BuildTestMacOs
+#    pool:
+#      vmImage: 'macOS-latest'
+#      timeoutInMinutes: 120
+#    steps:
+#      - checkout: self
+#        # See BUILD_DIR.
+#        path: git
+#
+#      - script: go version
+#        displayName: Go Version
+#        continueOnError: false
+#        enabled: true
+#
+#      - script: |
+#          GOPATH=$GOPATH:$(pwd)
+#          go test -v
+#        displayName: Run Golang tests.
+#        continueOnError: false
+#        enabled: true
+#
+#  - job: BuildTestWindows
+#    pool:
+#      vmImage: 'windows-latest'
+#      timeoutInMinutes: 120
+#    steps:
+#      - checkout: self
+#        # See BUILD_DIR.
+#        path: git
+#
+#      - script: go version
+#        displayName: Go Version
+#        continueOnError: false
+#        enabled: true
+#
+#      - script: |
+#          SET GOPATH=$GOPATH:$(pwd)
+#          go test -v
+#        displayName: Run Golang tests.
+#        continueOnError: false
+#        enabled: true
 
 # ToDo: On successful builds, update tags for the given build.
 #       Tag: <build>-release or <build>-development.
