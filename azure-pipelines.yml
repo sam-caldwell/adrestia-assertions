@@ -13,7 +13,7 @@ jobs:
       timeoutInMinutes: 120
     steps:
       - checkout: self
-        path: github.com/sam-caldwell/adrestia-assertions/pkg
+        path: src/github.com/sam-caldwell/adrestia-assertions/pkg
 
       - task: GoTool@0
         inputs:
