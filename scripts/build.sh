@@ -4,7 +4,7 @@
 # It is used by azure-pipelines.yml.
 
 ls -lah
+
 export GOPATH=/home/vsts/work/1/s/
-ls -la $GOPATH
 
 go test -v
