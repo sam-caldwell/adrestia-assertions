@@ -13,7 +13,6 @@ jobs:
       timeoutInMinutes: 120
     steps:
       - checkout: self
-        path: git
 
       - checkout: self
         path: git/github.com/sam-caldwell/adrestia-assertions/pkg
@@ -23,12 +22,10 @@ jobs:
           version: '1.13.5'
 
       - script:
-          /bin/bash -x
-          ls -la
-          echo "$(System.DefaultWorkingDirectory)"
-          cd $(System.DefaultWorkingDirectory)
-          export GOPATH=/home/vsts/work/1/git
-          go test -v
+          pwd
+          #/home/vsts/work/1/s/adrestia-assertions
+          #export GOPATH=/home/vsts/work/1/git
+          #go test -v
         displayName: Go Test
         enabled: true
         continueOnError: false
