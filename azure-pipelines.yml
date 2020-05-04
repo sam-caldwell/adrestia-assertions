@@ -27,6 +27,7 @@ jobs:
         enabled: true
 
       - script: |
+          GOPATH=$GOPATH:$(pwd)
           go test -v
         displayName: Run Golang tests.
         continueOnError: false
@@ -52,6 +53,7 @@ jobs:
         enabled: true
 
       - script: |
+          GOPATH=$GOPATH:$(pwd)
           go test -v
         displayName: Run Golang tests.
         continueOnError: false
@@ -78,7 +80,9 @@ jobs:
         continueOnError: false
         enabled: true
 
-      - script: go test -v
+      - script: |
+          GOPATH=$GOPATH:$(pwd)
+          go test -v
         displayName: Run Golang tests.
         continueOnError: false
         enabled: true
