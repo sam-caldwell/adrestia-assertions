@@ -1,11 +1,77 @@
 # adrestia-assertions/azure-pipelines.yml
 # (c) 2020 Sam Caldwell.  See LICENSE.txt.
 #
-# - This should--
-#   - ToDo: Build on commit to master and run tests.  If passed, repo should be tagged for release version.
-#   - ToDo: Build on commit to development and run tests.  If passed, repo should be tagged for dev version.
-#   - ToDo: Build on commit to any branch and run tests.  No tagging.
-#
-# - ToDo: Build/test should run in Windows, Linux and MacOS
-# - ToDo: Build/test should update slack channel.
-# - ToDo: Build/test should update repo build status.
+---
+trigger:
+  - master
+  - development
+
+job:
+  - job: BuildTestLinux
+    pool:
+      vmImage: 'ubuntu-latest'
+      timeoutInMinutes: 120
+    steps:
+      - step:
+          - checkout: self
+            # See BUILD_DIR.
+            path: git
+
+          - script: go version
+            displayName: Go Version
+            continueOnError: false
+            enabled: true
+
+          - script: |
+              cd git
+              go test -v
+            displayName: Run Golang tests.
+            continueOnError: false
+            enabled: true
+
+  - job: BuildTestMacOs
+    pool:
+      vmImage: 'macOS-latest'
+      timeoutInMinutes: 120
+    steps:
+      - step:
+          - checkout: self
+            # See BUILD_DIR.
+            path: git
+
+          - script: go version
+            displayName: Go Version
+            continueOnError: false
+            enabled: true
+
+          - script: |
+              cd git
+              go test -v
+            displayName: Run Golang tests.
+            continueOnError: false
+            enabled: true
+
+  - job: BuildTestWindows
+    pool:
+      vmImage: 'windows-latest'
+      timeoutInMinutes: 120
+    steps:
+      - step:
+          - checkout: self
+            # See BUILD_DIR.
+            path: git
+
+          - script: go version
+            displayName: Go Version
+            continueOnError: false
+            enabled: true
+
+          - script: |
+              cd git
+              go test -v
+            displayName: Run Golang tests.
+            continueOnError: false
+            enabled: true
+
+# ToDo: On successful builds, update tags for the given build.
+#       Tag: <build>-release or <build>-development.
