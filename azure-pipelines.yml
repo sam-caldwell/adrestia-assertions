@@ -11,21 +11,14 @@ jobs:
     pool:
       vmImage: 'ubuntu-latest'
       timeoutInMinutes: 120
-    steps:
       - checkout: self
-
-      - checkout: self
-        path: go/github.com/sam-caldwell/adrestia-assertions/pkg
+        path: github.com/sam-caldwell/adrestia-assertions/pkg
 
       - task: GoTool@0
         inputs:
           version: '1.13.5'
 
-      - script:
-          pwd && \
-          cd /home/vsts/work/1/s/adrestia-assertions
-          export GOPATH=/home/vsts/work/1/s/go
-          go test -v
+      - script: ./scripts/build.sh
         displayName: Go Test
         enabled: true
         continueOnError: false
