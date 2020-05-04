@@ -24,7 +24,8 @@ jobs:
 
       - script:
           cd /home/vsts/work/1/git
-          GOPATH=$(pwd) go test -v
+          export GOPATH=/home/vsts/work/1/git
+          go test -v
         displayName: Go Test
         enabled: true
         continueOnError: false
