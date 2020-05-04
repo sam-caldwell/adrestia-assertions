@@ -14,17 +14,11 @@ jobs:
     steps:
       - checkout: self
         # See BUILD_DIR.
-        path: git
+        path: /
 
       - task: GoTool@0
         inputs:
           version: '1.13.5'
-      - task: Go@0
-        inputs:
-          command: 'get'
-          arguments: '-d'
-          workingDirectory: '$(System.DefaultWorkingDirectory)'
-        displayName: Go Get
 
       - task: Go@0
         inputs:
@@ -32,11 +26,11 @@ jobs:
           workingDirectory: '$(System.DefaultWorkingDirectory)'
         displayName: Go Build
 
-      - task: Go@0
-        inputs:
-          command: 'test'
-          workingDirectory: '$(System.DefaultWorkingDirectory)'
+      - script:
+          GOPATH=$(pwd) go test -v
         displayName: Go Test
+        enabled: true
+        continueOnError: false
 #
 #  - job: BuildTestMacOs
 #    pool:
