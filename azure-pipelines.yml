@@ -71,13 +71,12 @@ jobs:
         continueOnError: false
         enabled: true
 
-      - script: list current directory
-        displayName: ls -lah
+      - script: ls -lah
+        displayName: list current directory
         continueOnError: false
         enabled: true
 
-      - script: |
-          go test -v
+      - script: go test -v
         displayName: Run Golang tests.
         continueOnError: false
         enabled: true
