@@ -23,6 +23,7 @@ jobs:
           version: '1.13.5'
 
       - script:
+          ls -la
           cd /home/vsts/work/1/git
           export GOPATH=/home/vsts/work/1/git
           go test -v
