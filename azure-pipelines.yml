@@ -15,16 +15,17 @@ jobs:
       - checkout: self
 
       - checkout: self
-        path: git/github.com/sam-caldwell/adrestia-assertions/pkg
+        path: go/github.com/sam-caldwell/adrestia-assertions/pkg
 
       - task: GoTool@0
         inputs:
           version: '1.13.5'
 
       - script:
-          pwd
-          #/home/vsts/work/1/s/adrestia-assertions
-          #export GOPATH=/home/vsts/work/1/git
+          pwd && \
+          ls -la && \
+          cd /home/vsts/work/1/s/adrestia-assertions
+          #export GOPATH=/home/vsts/work/1/s/go
           #go test -v
         displayName: Go Test
         enabled: true
