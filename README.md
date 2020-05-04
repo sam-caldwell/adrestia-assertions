@@ -6,12 +6,13 @@ AdrestiaAssertions
     
 ## Methods
 ```golang
-AssertPanic(condition, response)
+AdrestiaAssert.Panic(condition, response)
 ```
 * Evaluates condition.
 * If true, panic and write response string.
+
 ```golang
-AssertError(condition, response)
+AdrestiaAssert.Error(condition, response)
 ```
 * Evaluates condition.
 * Returns error if true, otherwise nil.
