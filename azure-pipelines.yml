@@ -23,10 +23,9 @@ jobs:
 
       - script:
           pwd && \
-          ls -la && \
           cd /home/vsts/work/1/s/adrestia-assertions
-          #export GOPATH=/home/vsts/work/1/s/go
-          #go test -v
+          export GOPATH=/home/vsts/work/1/s/go
+          go test -v
         displayName: Go Test
         enabled: true
         continueOnError: false
