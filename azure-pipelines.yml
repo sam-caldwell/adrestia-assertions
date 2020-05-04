@@ -24,14 +24,19 @@ jobs:
           command: 'get'
           arguments: '-d'
           workingDirectory: '$(System.DefaultWorkingDirectory)'
+        displayName: Go Get
+
       - task: Go@0
         inputs:
           command: 'build'
           workingDirectory: '$(System.DefaultWorkingDirectory)'
+        displayName: Go Build
+
       - task: Go@0
         inputs:
           command: 'test'
           workingDirectory: '$(System.DefaultWorkingDirectory)'
+        displayName: Go Test
 #
 #  - job: BuildTestMacOs
 #    pool:
