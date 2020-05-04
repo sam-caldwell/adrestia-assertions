@@ -21,8 +21,12 @@ jobs:
         continueOnError: false
         enabled: true
 
+      - script: list current directory
+        displayName: ls -lah
+        continueOnError: false
+        enabled: true
+
       - script: |
-          pwd
           go test -v
         displayName: Run Golang tests.
         continueOnError: false
@@ -39,6 +43,11 @@ jobs:
 
       - script: go version
         displayName: Go Version
+        continueOnError: false
+        enabled: true
+
+      - script: list current directory
+        displayName: ls -lah
         continueOnError: false
         enabled: true
 
@@ -59,6 +68,11 @@ jobs:
 
       - script: go version
         displayName: Go Version
+        continueOnError: false
+        enabled: true
+
+      - script: list current directory
+        displayName: ls -lah
         continueOnError: false
         enabled: true
 
