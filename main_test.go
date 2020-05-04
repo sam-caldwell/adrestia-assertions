@@ -9,7 +9,7 @@ package main
 import (
 	"crypto/sha256"
 	"fmt"
-	AdrestiaAssert "github.com/sam-caldwell/adrestia/adrestia-assertions/pkg"
+	AdrestiaAssert "github.com/sam-caldwell/adrestia-assertions/pkg"
 	"io/ioutil"
 	Testing "testing"
 )
