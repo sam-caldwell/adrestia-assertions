@@ -23,8 +23,10 @@ jobs:
           version: '1.13.5'
 
       - script:
+          /bin/bash -x
           ls -la
-          cd /home/vsts/work/1/git
+          echo "$(System.DefaultWorkingDirectory)"
+          cd $(System.DefaultWorkingDirectory)
           export GOPATH=/home/vsts/work/1/git
           go test -v
         displayName: Go Test
