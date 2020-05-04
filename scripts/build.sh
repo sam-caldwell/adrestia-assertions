@@ -3,6 +3,8 @@
 # This is the script for running the build-test cycle.
 # It is used by azure-pipelines.yml.
 
+echo "Current Working Directory: $(pwd)"
+
 ls -lah
 
 echo "Export GOPATH"
