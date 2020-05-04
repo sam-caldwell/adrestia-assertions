@@ -22,7 +22,7 @@ jobs:
         enabled: true
 
       - script: |
-          cd git
+          pwd
           go test -v
         displayName: Run Golang tests.
         continueOnError: false
@@ -43,7 +43,6 @@ jobs:
         enabled: true
 
       - script: |
-          cd git
           go test -v
         displayName: Run Golang tests.
         continueOnError: false
@@ -64,7 +63,6 @@ jobs:
         enabled: true
 
       - script: |
-          cd git
           go test -v
         displayName: Run Golang tests.
         continueOnError: false
