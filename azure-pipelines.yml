@@ -1,0 +1,11 @@
+# adrestia-assertions/azure-pipelines.yml
+# (c) 2020 Sam Caldwell.  See LICENSE.txt.
+#
+# - This should--
+#   - ToDo: Build on commit to master and run tests.  If passed, repo should be tagged for release version.
+#   - ToDo: Build on commit to development and run tests.  If passed, repo should be tagged for dev version.
+#   - ToDo: Build on commit to any branch and run tests.  No tagging.
+#
+# - ToDo: Build/test should run in Windows, Linux and MacOS
+# - ToDo: Build/test should update slack channel.
+# - ToDo: Build/test should update repo build status.
