@@ -13,7 +13,9 @@ jobs:
       timeoutInMinutes: 120
     steps:
       - checkout: self
-        # See BUILD_DIR.
+        path: git/github.com/sam-caldwell/adrestia-assertions/pkg
+
+      - checkout: self
         path: git
 
       - task: GoTool@0
