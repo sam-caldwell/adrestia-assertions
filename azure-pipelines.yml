@@ -20,8 +20,7 @@ jobs:
           version: '1.13.5'
 
       - script: |
-          mkdir -p ../github.com/sam-caldwell/adrestia-assertions/
-          cp -rfvp . ../src/github.com/sam-caldwell/adrestia-assertions || true
+          go get
         displayName: Fix dir structure
         enabled: true
         continueOnError: false
