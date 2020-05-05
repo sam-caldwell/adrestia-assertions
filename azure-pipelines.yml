@@ -14,6 +14,8 @@ jobs:
           GO_VERSION: 1.13.5
         GO_1_14:
           GO_VERSION: 1.14
+        GO_1_14_2:
+          GO_VERSION: 1.14.2
     pool:
       vmImage: 'ubuntu-latest'
       timeoutInMinutes: 120
