@@ -5,10 +5,12 @@
 
 echo "Current Working Directory: $(pwd)"
 
-ls -lah
+git clone git@github.com:sam-caldwell/adrestia-assertions.git
+git checkout development
+cd adrestia-assertions
 
 echo "Export GOPATH"
-export GOPATH=/home/vsts/work/1/s/
+export GOPATH=$(pwd)/adrestia-assertions
 echo "--> GOPATH: $GOPATH"
 
 echo "Run Go test"

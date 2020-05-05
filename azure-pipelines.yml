@@ -12,18 +12,12 @@ jobs:
       vmImage: 'ubuntu-latest'
       timeoutInMinutes: 120
     steps:
-      - checkout: self
-        path: git
-
       - task: GoTool@0
         inputs:
           version: '1.13.5'
 
-      - script: |
-          go get
-        displayName: Fix dir structure
-        enabled: true
-        continueOnError: false
+      - checkout: self
+        path: git
 
       - script: ./scripts/build.sh
         displayName: Go Test
