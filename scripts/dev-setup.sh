@@ -14,9 +14,7 @@ echo "Install the git hooks to the local environment."
     cd $GOPATH/src/github.com/git-hooks
     git clone https://github.com/git-hooks/git-hooks.git
     cd git-hooks/
-    # install godep and restore deps
-    make get
-    # install binary
+    make build test
     go install
 )
 git hooks install
