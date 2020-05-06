@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-export GO111MODULE="on"
+echo "GOPATH: $GOPATH"
 
 echo "Install yamllint"
 brew install yamllint
@@ -9,6 +9,7 @@ echo "Install golint"
 go get -u golang.org/x/lint/golint
 
 echo "Install git-hooks"
+export GO111MODULE="on"
 go get -u github.com/git-hooks/git-hooks
 
 echo "Install the git hooks to the local environment."
