@@ -5,10 +5,10 @@ setup:
 	./scripts/dev-setup.sh
 
 lint:
-	git hooks run pre-commit
+	./scripts/run-linters.sh
 
 go_test:
-	git hooks run pre-push
+	./scripts/run-tests.sh
 
 test: go_test
 

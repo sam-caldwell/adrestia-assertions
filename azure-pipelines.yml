@@ -21,19 +21,26 @@ jobs:
           version: '1.14.2'
 
       - script: |
-          ./githooks/pre-commit/linter
+          set -e
+          ./scripts/dev-setup.sh
+        displayName: Install tools
+        continueOnError: false
+        enabled: true
+
+      - script: |
+          ./scripts/run-linters.sh
         displayName: Linter
         continueOnError: false
         enabled: true
 
       - script: |
-          ./githooks/pre-push/run-tests
+          ./scripts/run-tests.sh
         displayName: Go tests
         continueOnError: false
         enabled: true
 
       - script: |
-          ./scripts/static-analysis
+          ./scripts/run-static-analysis.sh
         displayName: Static Analysis
         continueOnError: false
         enabled: true
