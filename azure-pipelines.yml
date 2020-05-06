@@ -34,35 +34,3 @@ jobs:
         displayName: Current State
         continueOnError: false
         enabled: true
-
-  - job: Release
-    pool:
-      vmImage: 'ubuntu-latest'
-      timeoutInMinutes: 120
-    dependsOn: BuildTestLinux
-    condition: eq(variables['Build.SourceBranchName'], 'master')
-    steps:
-      - checkout: self
-        clean: true
-        path: git
-        persistCredentials: true
-
-      - script: |
-          echo "Branch: $(Build.SourceBranchName)"
-          echo "BuidId: $(Build.BuildId)"
-          ./githooks/pre-commit/linter
-          ./githooks/pre-push/run-tests
-          ./scripts/static-analysis
-        displayName: Run Golang tests.
-        continueOnError: false
-        enabled: true
-
-      - task: GitHubRelease@1
-        inputs:
-          repositoryName: '$(Build.Repository.Name)'
-          action: 'create'
-          target: '$(Build.BuildId)'
-          tagSource: 'gitTag'
-          tagPattern: 'v*'
-          assets:
-          addChangeLog: false
