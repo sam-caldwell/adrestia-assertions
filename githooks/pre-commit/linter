@@ -1,0 +1,30 @@
+#!/bin/bash -e
+# pre-commit/linter
+# (c) 2020 Sam Caldwell.  See LICENSE.txt
+#
+# This ensures `make lint` runs and passes before we push.
+
+command -v yamllint -v || brew install yamllint
+command -v golint || go get -u golang.org/x/lint/golint
+
+for f in $(find ./ -name "*.y*ml" -type f); do
+    yamllint "$f" ||{
+        echo "Lint $f fails"
+        exit 1
+     }
+    echo "Lint $f passes"
+done
+
+# shellcheck disable=SC2044
+for f in $(find ./ -name "*.sh" -type f); do
+    shellcheck "$f" ||{
+        echo "Lint $f fails"
+        exit 1
+     }
+    echo "Lint $f passes"
+done
+
+for f in $(find ./ -name "*.go"); do
+    golint -set_exit_status "$f" || exit 1
+    echo "$f passes"
+done
