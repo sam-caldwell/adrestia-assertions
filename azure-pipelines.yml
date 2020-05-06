@@ -23,6 +23,7 @@ jobs:
       - script: |
           ./githooks/pre-commit/linter
           ./githooks/pre-push/run-tests
+          ./scripts/static-analysis
         displayName: Run Golang tests.
         continueOnError: false
         enabled: true
