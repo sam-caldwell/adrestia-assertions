@@ -28,6 +28,16 @@ jobs:
         continueOnError: false
         enabled: true
 
+      - script: |
+          echo "Branch: $(Build.SourceBranchName)"
+          echo "BuidId: $(Build.BuildId)"
+          ./githooks/pre-commit/linter
+          ./githooks/pre-push/run-tests
+          ./scripts/static-analysis
+        displayName: Run Golang tests.
+        continueOnError: false
+        enabled: true
+
   - job: Release
     pool:
       vmImage: 'ubuntu-latest'
