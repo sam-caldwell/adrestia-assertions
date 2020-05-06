@@ -12,10 +12,9 @@ jobs:
       vmImage: 'ubuntu-latest'
       timeoutInMinutes: 120
     steps:
-      - step:
-          - checkout: self
-            # See BUILD_DIR.
-            path: git
+      - checkout: self
+        # See BUILD_DIR.
+        path: git
 
       - task: GoTool@0
         inputs:
