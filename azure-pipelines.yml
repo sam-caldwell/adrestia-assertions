@@ -51,7 +51,7 @@ jobs:
           succeeded(),
           eq(
             variables['Build.SourceBranch'],
-            'refs/heads/master'
+            'master'
         ))
       steps:
         - checkout: self
