@@ -10,4 +10,8 @@ git hooks install
 
 echo "List current hooks"
 git hooks list
+
+echo "Install GoDoc"
+go get golang.org/x/tools/cmd/godoc
+
 echo "$0 done"
