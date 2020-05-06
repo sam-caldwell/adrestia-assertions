@@ -42,6 +42,11 @@ jobs:
     dependsOn: BuildTestLinux
     condition: eq(variables['Build.SourceBranchName'], 'master')
     steps:
+      - checkout: self
+        clean: true
+        path: git
+        persistCredentials: true
+
       - script: |
           echo "Branch: $(Build.SourceBranchName)"
           echo "BuidId: $(Build.BuildId)"
