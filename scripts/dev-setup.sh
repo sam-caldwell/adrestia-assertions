@@ -1,6 +1,4 @@
 #!/bin/bash -e
-export GO111MODULE="on"
-export GOPATH="$GOPATH:$(pwd)/"
 
 echo "GOPATH: $GOPATH"
 
