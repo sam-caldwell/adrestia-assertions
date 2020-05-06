@@ -1,17 +1,17 @@
-#!/bin/bash -e
+#!/bin/bash
 
-echo "GOPATH: $GOPATH"
+export GO111MODULE="on"
+
+echo "Install git-hooks"
+go get github.com/git-hooks/git-hooks
+
+echo "Install the git hooks to the local environment."
+git hooks install
+
+echo "List current hooks"
+git hooks list
 
 echo "Install GoDoc"
 go get golang.org/x/tools/cmd/godoc
 
-echo "Install yamllint"
-brew install yamllint
-
-echo "Install golint"
-go get -u golang.org/x/lint/golint || {
-    echo "HOME: $HOME"
-    ls -la "$HOME"
-    exit 1
-}
 echo "$0 done"

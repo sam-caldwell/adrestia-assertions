@@ -1,5 +1,5 @@
 #!/bin/bash -e
-# pre-commit/linter
+# scripts/run-linters.sh
 # (c) 2020 Sam Caldwell.  See LICENSE.txt
 #
 # This ensures `make lint` runs and passes before we push.

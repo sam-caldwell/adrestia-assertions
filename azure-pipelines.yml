@@ -40,7 +40,7 @@ jobs:
         enabled: true
 
       - script: |
-          ./scripts/run-static-analysis.sh
+          ./scripts/static-analysis
         displayName: Static Analysis
         continueOnError: false
         enabled: true
