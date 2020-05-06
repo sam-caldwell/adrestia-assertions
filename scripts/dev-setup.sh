@@ -14,4 +14,7 @@ git hooks list
 echo "Install GoDoc"
 go get golang.org/x/tools/cmd/godoc
 
+echo "Install yamllint"
+brew install yamllint
+
 echo "$0 done"
