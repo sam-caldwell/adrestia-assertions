@@ -18,7 +18,7 @@ func TestReadMeHash(t *Testing.T) {
 		Hash the License file.  Ensure it matches the expected hash.
 	*/
 	const licenseFile = "../README.md"
-	const expectedHash = "270e5ea63f22489c0bac9bc669d41a00438fd629a3a1579d3fdf8432c1817710"
+	const expectedHash = "0eef3fab105c796e1ea0a291b31fed9755384569dcbbec69fa06377ffbc53063"
 	fileContent, err := ioutil.ReadFile(licenseFile)
 	if err != nil {
 		t.Errorf("File failed hash validation '%s'(%s): %v", licenseFile, expectedHash, err)
