@@ -10,8 +10,12 @@ jobs:
   - job: BuildTestLinux
     strategy:
       matrix:
+        GO_1_11:
+          GO_VERSION: 1.11.13
+        GO_1_12:
+          GO_VERSION: 1.12.17
         GO_1_13:
-          GO_VERSION: 1.13.5
+          GO_VERSION: 1.13.9
         GO_1_14:
           GO_VERSION: 1.14
         GO_1_14_2:
