@@ -21,9 +21,8 @@ jobs:
           version: '1.13.5'
 
       - script: |
-          make setup
-          make lint
-          make test
+          ./githooks/pre-commit/linter
+          ./githooks/pre-push/run-tests
         displayName: Run Golang tests.
         continueOnError: false
         enabled: true
