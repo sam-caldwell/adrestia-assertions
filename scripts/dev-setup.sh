@@ -1,12 +1,13 @@
 #!/bin/bash
 
-go get -d
+GOPATH="$GOROOT:$(pwd)/git/"
+export GOPATH
 
-#echo "Install GoLint"
-#go get -u golang.org/x/lint/golint
-#
-#echo "Install GoDoc"
-#go get golang.org/x/tools/cmd/godoc
+echo "Install GoLint"
+go get -u golang.org/x/lint/golint
+
+echo "Install GoDoc"
+go get golang.org/x/tools/cmd/godoc
 
 echo "Install yamllint"
 brew install yamllint
