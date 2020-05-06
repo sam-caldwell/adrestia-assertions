@@ -43,7 +43,7 @@ jobs:
           ./scripts/run-static-analysis.sh
         displayName: Static Analysis
         continueOnError: false
-        enabled: true
+        enabled: disabled
 
       - script: |
           echo "Branch: $(Build.SourceBranchName)"
