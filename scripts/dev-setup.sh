@@ -1,17 +1,25 @@
 #!/bin/bash -e
-
-# export GOPATH="$GOPATH:$(pwd)/"
+export GO111MODULE="on"
+export GOPATH="$GOPATH:$(pwd)/"
 
 echo "GOPATH: $GOPATH"
 
 echo "Install git-hooks"
-export GO111MODULE="on"
-go get -u github.com/git-hooks/git-hooks
+
+#go get -u github.com/git-hooks/git-hooks
 
 echo "Install the git hooks to the local environment."
-git hooks install  || {
-    ls -la
-}
+(
+    mkdir -p $GOPATH/src/github.com/git-hooks
+    cd $GOPATH/src/github.com/git-hooks
+    git clone git@github.com:git-hooks/git-hooks.git
+    cd git-hooks/
+    # install godep and restore deps
+    make get
+    # install binary
+    go install
+)
+git hooks install
 
 echo "List current hooks"
 git hooks list
