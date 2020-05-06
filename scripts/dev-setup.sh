@@ -6,7 +6,7 @@ echo "Install yamllint"
 brew install yamllint
 
 echo "Install golint"
-get -u golang.org/x/lint/golint
+go get -u golang.org/x/lint/golint
 
 echo "Install git-hooks"
 go get github.com/git-hooks/git-hooks
