@@ -29,10 +29,15 @@ jobs:
         enabled: true
 
       - script: |
+          echo "Configure git"
           git config --global user.email "azure@samcaldwell.net"
           git config --global user.name "Azure Build Pipeline"
-          git tag -a "v$(Build.BuildId)" -m "release $(Build.BuildId)"
-          git push origin --tags
+          echo "tag build on $(git branch | grep \* | head -n1)"
+          echo "buildId: $(Build.BuildId)"
+          [[ "$(git branch | grep \* | head -n1)" == "master" ]] && {
+            git tag -a "v$(Build.BuildId)" -m "release $(Build.BuildId) "
+            git push origin --tags
+          }
         displayName: Tag and push
         continueOnError: false
         enabled: true
