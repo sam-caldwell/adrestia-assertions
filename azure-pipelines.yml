@@ -48,7 +48,7 @@ jobs:
       dependsOn: BuildTestLinux
       condition: |
         and(
-          succeeded(),
+          succeeded('BuildTestLinux'),
           eq(
             variables['Build.SourceBranch'],
             'master'
