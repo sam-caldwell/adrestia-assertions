@@ -6,7 +6,7 @@ trigger:
   - master
   - development
 
-job:
+jobs:
   - job: BuildTestLinux
     pool:
       vmImage: 'ubuntu-latest'
