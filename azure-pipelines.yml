@@ -22,9 +22,19 @@ jobs:
 
       - script: |
           ./githooks/pre-commit/linter
+        displayName: Linter
+        continueOnError: false
+        enabled: true
+
+      - script: |
           ./githooks/pre-push/run-tests
+        displayName: Go tests
+        continueOnError: false
+        enabled: true
+
+      - script: |
           ./scripts/static-analysis
-        displayName: Run Golang tests.
+        displayName: Static Analysis
         continueOnError: false
         enabled: true
 
