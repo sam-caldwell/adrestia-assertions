@@ -13,10 +13,10 @@ import (
 )
 
 func main() {
-	Assert.Panic(false, "No Panic")
-	if Assert.Error(false, "No Error") == nil {
-		if Assert.Error(true, "Expect error") != nil {
-			Assert.Panic(true, "Now we panic")
+	assert.Panic(false, "No Panic")
+	if assert.Error(false, "No Error") == nil {
+		if assert.Error(true, "Expect error") != nil {
+			assert.Panic(true, "Now we panic")
 		}
 	}
 }
@@ -27,16 +27,16 @@ func TestAssertPanicTrue(t *Testing.T) {
 			t.Error("The code did not panic.")
 		}
 	}()
-	Assert.Panic(true, "We should panic.")
+	assert.Panic(true, "We should panic.")
 }
 
 func TestAssertPanicFalse(t *Testing.T) {
-	Assert.Panic(false, "Unexpected panic.")
+	assert.Panic(false, "Unexpected panic.")
 }
 
 func TestAssertErrorTrue(t *Testing.T) {
 	response := "Expected error"
-	err := Assert.Error(true, response)
+	err := assert.Error(true, response)
 	if err == nil {
 		t.Error("Expected error.  None returned.")
 	}
@@ -46,7 +46,7 @@ func TestAssertErrorTrue(t *Testing.T) {
 }
 
 func TestAssertErrorFalse(t *Testing.T) {
-	err := Assert.Error(false, "Unexpected Error")
+	err := assert.Error(false, "Unexpected Error")
 	if err != nil {
 		t.Error("Expected error.  None returned.")
 	}

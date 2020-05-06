@@ -7,5 +7,8 @@ setup:
 lint:
 	git hooks run pre-commit
 
-test:
+go_test:
 	git hooks run pre-push
+
+test: go_test
+

@@ -4,4 +4,7 @@
 #
 # Run all tests
 
-make test
+(
+    cd tests
+    go test -v
+)
