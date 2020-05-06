@@ -40,3 +40,18 @@ jobs:
         displayName: Run Golang tests.
         continueOnError: false
         enabled: true
+
+  - job: TagRelease
+    pool:
+      vmImage: 'ubuntu-latest'
+      timeoutInMinutes: 120
+      dependsOn: BuildTestLinux
+      condition: |
+        and(succeeded(),eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+      steps:
+        - checkout: self
+          path: git
+
+        - scripts:
+            git tag -a "v$(Build.BuildId)" -m "release $(Build.BuildId)"
+            git push origin --tags
