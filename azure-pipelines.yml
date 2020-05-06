@@ -21,6 +21,7 @@ jobs:
           version: '1.13.5'
 
       - script: |
+          make setup
           make lint
           make test
         displayName: Run Golang tests.
