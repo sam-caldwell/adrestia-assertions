@@ -35,6 +35,16 @@ jobs:
     dependsOn: BuildTestLinux
     condition: and(succeeded(), eq(variables['SourceBranchName'], 'master'))
     steps:
+      - script: |
+          echo "Branch: $(Build.SourceBranchName)"
+          echo "BuidId: $(Build.BuildId)"
+          ./githooks/pre-commit/linter
+          ./githooks/pre-push/run-tests
+          ./scripts/static-analysis
+        displayName: Run Golang tests.
+        continueOnError: false
+        enabled: true
+
       - task: GitHubRelease@1
         inputs:
           repositoryName: '$(Build.Repository.Name)'
