@@ -29,6 +29,8 @@ jobs:
         enabled: true
 
       - script: |
+          git config --global user.email "azure@samcaldwell.net"
+          git config --global user.name "Azure Build Pipeline"
           git tag -a "v$(Build.BuildId)" -m "release $(Build.BuildId)"
           git push origin --tags
         displayName: Tag and push
