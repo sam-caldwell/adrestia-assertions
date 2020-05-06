@@ -20,17 +20,6 @@ jobs:
         inputs:
           version: '1.13.5'
 
-      - task: Go@0
-        inputs:
-          command: 'get'
-          arguments: '-d'
-          workingDirectory: '$(System.DefaultWorkingDirectory)'
-
-      - script: go version
-        displayName: Go Version
-        continueOnError: false
-        enabled: true
-
       - script: |
           make lint
           make test
