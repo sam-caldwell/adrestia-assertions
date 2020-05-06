@@ -9,7 +9,7 @@ echo "Install golint"
 go get -u golang.org/x/lint/golint
 
 echo "Install git-hooks"
-go get github.com/git-hooks/git-hooks
+go get -u github.com/git-hooks/git-hooks
 
 echo "Install the git hooks to the local environment."
 git hooks install
