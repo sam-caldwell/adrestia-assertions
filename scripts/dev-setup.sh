@@ -12,7 +12,7 @@ echo "Install the git hooks to the local environment."
 (
     mkdir -p $GOPATH/src/github.com/git-hooks
     cd $GOPATH/src/github.com/git-hooks
-    git clone git@github.com:git-hooks/git-hooks.git
+    git clone https://github.com/git-hooks/git-hooks.git
     cd git-hooks/
     # install godep and restore deps
     make get
