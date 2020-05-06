@@ -13,7 +13,7 @@ jobs:
       timeoutInMinutes: 120
     steps:
       - checkout: self
-        # See BUILD_DIR.
+        clean: true
         path: git
 
       - task: GoTool@0
@@ -28,16 +28,19 @@ jobs:
         continueOnError: false
         enabled: true
 
-      - script: |
-          echo "Configure git"
-          git config --global user.email "azure@samcaldwell.net"
-          git config --global user.name "Azure Build Pipeline"
-          echo "tag build on $(git branch | grep \* | head -n1)"
-          echo "buildId: $(Build.BuildId)"
-          [[ "$(git branch | grep \* | head -n1)" == "master" ]] && {
-            git tag -a "v$(Build.BuildId)" -m "release $(Build.BuildId) "
-            git push origin --tags
-          }
-        displayName: Tag and push
-        continueOnError: false
-        enabled: true
+  - job: Release
+    pool:
+      vmImage: 'ubuntu-latest'
+      timeoutInMinutes: 120
+    dependsOn: BuildTestLinux
+    condition: and(succeeded(), eq(variables['SourceBranchName'], 'master'))
+    steps:
+      - task: GitHubRelease@1
+        inputs:
+          repositoryName: '$(Build.Repository.Name)'
+          action: 'create'
+          target: '$(Build.BuildId)'
+          tagSource: 'gitTag'
+          tagPattern: 'v*'
+          assets:
+          addChangeLog: false
