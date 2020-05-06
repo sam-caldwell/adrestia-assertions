@@ -47,7 +47,12 @@ jobs:
       timeoutInMinutes: 120
       dependsOn: BuildTestLinux
       condition: |
-        and(succeeded(),eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+        and(
+          succeeded(),
+          eq(
+            variables['Build.SourceBranch'],
+            'refs/heads/master'
+        ))
       steps:
         - checkout: self
           path: git
