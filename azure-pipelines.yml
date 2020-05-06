@@ -40,7 +40,7 @@ jobs:
       vmImage: 'ubuntu-latest'
       timeoutInMinutes: 120
     dependsOn: BuildTestLinux
-    condition: eq(variables['SourceBranchName'], 'master')
+    condition: eq(variables['Build.SourceBranchName'], 'master')
     steps:
       - script: |
           echo "Branch: $(Build.SourceBranchName)"
