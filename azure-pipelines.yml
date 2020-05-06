@@ -8,19 +8,6 @@ trigger:
 
 jobs:
   - job: BuildTestLinux
-    strategy:
-      matrix:
-        GO_1_11:
-          GO_VERSION: 1.11.13
-        GO_1_12:
-          GO_VERSION: 1.12.17
-        GO_1_13:
-          GO_VERSION: 1.13.9
-        GO_1_14:
-          GO_VERSION: 1.14
-        GO_1_14_2:
-          GO_VERSION: 1.14.2
-      maxParallel: 2
     pool:
       vmImage: 'ubuntu-latest'
       timeoutInMinutes: 120
@@ -31,7 +18,7 @@ jobs:
 
       - task: GoTool@0
         inputs:
-          version: $(GO_VERSION)
+          version: '1.14.2'
 
       - script: |
           ./githooks/pre-commit/linter
@@ -41,24 +28,8 @@ jobs:
         continueOnError: false
         enabled: true
 
-  - job: TagRelease
-    pool:
-      vmImage: 'ubuntu-latest'
-      timeoutInMinutes: 120
-      dependsOn: BuildTestLinux
-      condition: |
-        and(
-          succeeded('BuildTestLinux'),
-          eq(
-            variables['Build.SourceBranch'],
-            'master'
-        ))
-      steps:
-        - checkout: self
-          path: git
-
-        - scripts: |
-            git tag -a "v$(Build.BuildId)" -m "release $(Build.BuildId)"
-            git push origin --tags
-          displayName: Tag and push
-          enabled: true
+      - scripts: |
+          git tag -a "v$(Build.BuildId)" -m "release $(Build.BuildId)"
+          git push origin --tags
+        displayName: Tag and push
+        enabled: true
