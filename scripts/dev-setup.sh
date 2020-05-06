@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-export GOPATH="$GOPATH:$(pwd)/"
+# export GOPATH="$GOPATH:$(pwd)/"
 
 echo "GOPATH: $GOPATH"
 
