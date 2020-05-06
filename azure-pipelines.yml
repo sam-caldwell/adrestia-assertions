@@ -31,10 +31,7 @@ jobs:
       - script: |
           echo "Branch: $(Build.SourceBranchName)"
           echo "BuidId: $(Build.BuildId)"
-          ./githooks/pre-commit/linter
-          ./githooks/pre-push/run-tests
-          ./scripts/static-analysis
-        displayName: Run Golang tests.
+        displayName: Current State
         continueOnError: false
         enabled: true
 
@@ -43,7 +40,7 @@ jobs:
       vmImage: 'ubuntu-latest'
       timeoutInMinutes: 120
     dependsOn: BuildTestLinux
-    condition: and(succeeded(), eq(variables['SourceBranchName'], 'master'))
+    condition: eq(variables['SourceBranchName'], 'master')
     steps:
       - script: |
           echo "Branch: $(Build.SourceBranchName)"
